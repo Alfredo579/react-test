@@ -2,10 +2,14 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts, selectAllPosts } from './postsSlice';
+import SinglePost from './SinglePost';
+import Button from 'react-bootstrap/esm/Button';
 
 export const PostsContainer = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts);
+
+  // console.log(posts);
 
   const postStatus = useSelector((state) => state.posts.status);
 
@@ -15,18 +19,17 @@ export const PostsContainer = () => {
     }
   }, [postStatus, dispatch]);
 
-  const renderedPosts = posts.map((post, index) => (
-    <article key={index}>
-      <h3>{post.id}</h3>
-      <h3>{post.title}</h3>
-      <p>{post.body}</p>
-    </article>
+  const postsToReverse = [...posts];
+
+  let postsReverse = postsToReverse.reverse();
+
+  const renderedPosts = postsReverse.map((post, index) => (
+    <SinglePost style={{ width: '18rem' }} post={post} key={index} />
   ));
 
   return (
     <section>
-      <h2>Lista post</h2>
-      {renderedPosts}
+      <div className='post-list'>{renderedPosts}</div>
     </section>
   );
 };

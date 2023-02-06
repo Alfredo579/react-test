@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -36,4 +36,27 @@
   100% {
     transform: translateY(0px);
   }
+} */
+
+div.post-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+header.header-posts-list {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(49, 49, 231, 0.457);
+  padding: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(128, 128, 128, 0.656);
+  z-index: 100;
 }
