@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import { createPost, makeAlert } from './postsSlice';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
 export const AddPostForm = () => {
@@ -12,7 +12,6 @@ export const AddPostForm = () => {
   const dispatch = useDispatch();
   const alertMessage = useSelector((state) => state.posts.alert);
 
-  console.log(alertMessage);
   const onSavePostClicked = () => {
     if (title && body) {
       dispatch(
@@ -22,6 +21,8 @@ export const AddPostForm = () => {
           body,
         })
       );
+      dispatch(makeAlert('Post creato correttamente'));
+
       setTitle('');
       setBody('');
     }
@@ -42,19 +43,20 @@ export const AddPostForm = () => {
         />
       </Form.Group>
 
-      <Form.Group className='mb-3' controlId='formAddPostBody'>
+      <Form.Group required className='mb-3' controlId='formAddPostBody'>
         <Form.Label>Contenuto</Form.Label>
         <Form.Control
+          required
           onChange={onBodyChanged}
           type='text'
           placeholder='A cosa stai pensando..'
         />
       </Form.Group>
       <Button
+        disabled={!title && !body}
         onClick={(e) => {
           e.preventDefault();
           onSavePostClicked();
-          dispatch(makeAlert('Post creato correttamente'));
         }}
         variant='primary'
         type='submit'

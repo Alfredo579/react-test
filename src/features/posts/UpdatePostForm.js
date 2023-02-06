@@ -27,56 +27,30 @@ export const UpdatePostForm = ({ postId }) => {
     }
   };
 
-  return (
-    // <section>
-    //   <h2>Edit Post</h2>
-    //   <form>
-    //     <label htmlFor='postTitle'>Post Title:</label>
-    //     <input
-    //       type='text'
-    //       id='postTitle'
-    //       name='postTitle'
-    //       placeholder="What's on your mind?"
-    //       value={title}
-    //       onChange={onTitleChanged}
-    //     />
-    //     <label htmlFor='postContent'>Content:</label>
-    //     <textarea
-    //       id='postContent'
-    //       name='postContent'
-    //       value={body}
-    //       onChange={onBodyChanged}
-    //     />
-    //   </form>
-    //   <button type='button' onClick={onSavePostClicked}>
-    //     Save Post
-    //   </button>
-    // </section>
-    alertMessage ? (
-      <Alert variant='success'>{alertMessage}</Alert>
-    ) : (
-      <Form>
-        <Form.Group className='mb-3' controlId='formAddPostTitle'>
-          <Form.Label>Titolo</Form.Label>
-          <Form.Control onChange={onTitleChanged} type='text' value={title} />
-        </Form.Group>
+  return alertMessage ? (
+    <Alert variant='success'>{alertMessage}</Alert>
+  ) : (
+    <Form>
+      <Form.Group className='mb-3' controlId='formAddPostTitle'>
+        <Form.Label>Titolo</Form.Label>
+        <Form.Control onChange={onTitleChanged} type='text' value={title} />
+      </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formAddPostBody'>
-          <Form.Label>Contenuto</Form.Label>
-          <Form.Control onChange={onBodyChanged} type='text' value={body} />
-        </Form.Group>
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            onSavePostClicked();
-            dispatch(makeAlert('Post aggiornato!'));
-          }}
-          variant='primary'
-          type='submit'
-        >
-          Pubblica
-        </Button>
-      </Form>
-    )
+      <Form.Group className='mb-3' controlId='formAddPostBody'>
+        <Form.Label>Contenuto</Form.Label>
+        <Form.Control onChange={onBodyChanged} type='text' value={body} />
+      </Form.Group>
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+          onSavePostClicked();
+          dispatch(makeAlert('Post aggiornato!'));
+        }}
+        variant='warning'
+        type='submit'
+      >
+        Modifica
+      </Button>
+    </Form>
   );
 };

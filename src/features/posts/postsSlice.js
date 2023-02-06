@@ -23,7 +23,7 @@ export const createPost = createAsyncThunk(
       body: JSON.stringify({
         title: title,
         body: body,
-        userId: 1,
+        userId: 11,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -53,7 +53,7 @@ const postsSlice = createSlice({
       const { id } = action.payload;
       const existingPost = state.posts.find((post) => post.id === id);
       if (existingPost) {
-        let index = state.posts.indexOf(existingPost);
+        const index = state.posts.indexOf(existingPost);
         state.posts.splice(index, 1);
       }
     },
@@ -85,8 +85,9 @@ const postsSlice = createSlice({
   },
 });
 
-export const { postUpdated, postDeleted } = postsSlice.actions;
+export const { postUpdated, postDeleted, makeAlert } = postsSlice.actions;
+
 export const selectAllPosts = (state) => state.posts.posts;
 export const selectPostMessage = (state) => state.posts.message;
-export const { makeAlert } = postsSlice.actions;
+
 export default postsSlice.reducer;

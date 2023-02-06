@@ -2,14 +2,11 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts, selectAllPosts } from './postsSlice';
-import SinglePost from './SinglePost';
-import Button from 'react-bootstrap/esm/Button';
+import { SinglePost } from './SinglePost';
 
 export const PostsContainer = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts);
-
-  // console.log(posts);
 
   const postStatus = useSelector((state) => state.posts.status);
 

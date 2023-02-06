@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { makeAlert } from '../features/posts/postsSlice';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-function SimpleModal({ children, isOpen, modalTitle, setIsOpen }) {
+export const SimpleModal = ({ children, isOpen, modalTitle, setIsOpen }) => {
   const dispatch = useDispatch();
 
   if (!isOpen) {
@@ -38,12 +37,9 @@ function SimpleModal({ children, isOpen, modalTitle, setIsOpen }) {
             >
               Chiudi
             </Button>
-            <Button variant='primary'>Salva</Button>
           </Modal.Footer>
         </Modal.Dialog>
       </div>
     </div>
   );
-}
-
-export default SimpleModal;
+};

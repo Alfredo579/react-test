@@ -5,7 +5,7 @@ import { PostsContainer } from './features/posts/PostsContainer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/esm/Button';
-import SimpleModal from './components/SimpleModal';
+import { SimpleModal } from './components/SimpleModal';
 import { AddPostForm } from './features/posts/AddPostForm';
 
 function App() {
