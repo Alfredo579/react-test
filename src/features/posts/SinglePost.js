@@ -9,7 +9,7 @@ import { usersAvatars } from '../../usersAvatars';
 
 export const SinglePost = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [whatToOpen, setWhatToOpen] = useState();
+  const [modalContent, setModalContent] = useState();
   const [modalTitle, setModalTitle] = useState();
 
   const operations = {
@@ -34,7 +34,7 @@ export const SinglePost = ({ post }) => {
             variant='primary'
             onClick={() => {
               setIsOpen(true);
-              setWhatToOpen('show');
+              setModalContent('show');
               setModalTitle('Dettaglio Post');
             }}
           >
@@ -44,7 +44,7 @@ export const SinglePost = ({ post }) => {
             variant='warning'
             onClick={() => {
               setIsOpen(true);
-              setWhatToOpen('edit');
+              setModalContent('edit');
               setModalTitle('Modifica Post');
             }}
           >
@@ -54,7 +54,7 @@ export const SinglePost = ({ post }) => {
             variant='danger'
             onClick={() => {
               setIsOpen(true);
-              setWhatToOpen('delete');
+              setModalContent('delete');
               setModalTitle('Elimina Post');
             }}
           >
@@ -67,7 +67,7 @@ export const SinglePost = ({ post }) => {
         modalTitle={modalTitle}
         setIsOpen={setIsOpen}
       >
-        {operations[whatToOpen]}
+        {operations[modalContent]}
       </SimpleModal>
     </Card>
   );
